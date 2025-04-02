@@ -372,7 +372,7 @@ try:
                         close_fds=True,
                         shell=True,
                         executable='/bin/bash'
-                    )
+                    ).wait()
                 elif os.geteuid() != 0 and shutil.which("chromium"):
                     subprocess.Popen(
                         "chromium --app=" + gf_url,
@@ -382,11 +382,10 @@ try:
                         close_fds=True,
                         shell=True,
                         executable='/bin/bash'
-                    )
+                    ).wait()
                 else:
                     webbrowser.open(gf_url)
-
-        while True: time.sleep(0.1)
+                    while True: time.sleep(0.1)
     else:
         os.system(
             tmux_executable +
@@ -428,7 +427,7 @@ try:
                         close_fds=True,
                         shell=True,
                         executable='/bin/bash'
-                    )
+                    ).wait()
                 elif os.geteuid() != 0 and shutil.which("chromium"):
                     subprocess.Popen(
                         "chromium --app=" + gf_url,
@@ -438,11 +437,10 @@ try:
                         close_fds=True,
                         shell=True,
                         executable='/bin/bash'
-                    )
+                    ).wait()
                 else:
                     webbrowser.open(gf_url)
-
-        while True: time.sleep(0.1)
+                    while True: time.sleep(0.1)
 except KeyboardInterrupt as e:
     print("Keyboard interrupt.")
     exit(0)
